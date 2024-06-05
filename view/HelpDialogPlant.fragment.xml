@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="selectDialog" title="Problem" items="{Data>/WorkCenter}" search=".onValueHelpSearch" confirm=".onValueHelpPlantClose"
+		cancel=".onValueHelpPlantClose">
+		<StandardListItem title="{Data>Name}" />
+	</SelectDialog>
+</core:FragmentDefinition>

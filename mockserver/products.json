@@ -1,0 +1,38 @@
+{
+  "ProductCollection": [
+    {
+      "ProductId": "HT-1040",
+      "Product": "Printer",
+      "Problems": [{ "Name": "No Output" },{ "Name": "No Power" }],
+      "Cause": [{ "Name": "No Ink" },  { "Name": "No Papers" },{ "Name": "Cable Malfunction" }]
+    },
+    {
+      "ProductId": "HT-1500",
+      "Product": "Server",
+      "Problems": [{ "Name": "No Connectivity" }, { "Name": "Cant Upload" }],
+      "Cause": [{ "Name": "Cable Malfunction" }, { "Name": "Driver Outdated" }, { "Name": "No Storage" }]
+    },
+    {
+      "ProductId": "HT-1603",
+      "Product": "Desktop Computer",
+      "Problems": [{ "Name": "Black Screen" }, { "Name": "Slow Performance" }],
+      "Cause": [{ "Name": "No Power" }, { "Name": "OS Crash" }, { "Name": "Not Rnough RAM" }, { "Name": "OS Outdated" }]
+    },
+    {
+      "ProductId": "HT-9992",
+      "Product": "Tablet",
+      "Problems": [{ "Name": "Slow Performance" },{ "Name": "Screen Cracked" }],
+      "Cause": [{ "Name": "Not Enough RAM" }, { "Name": "OS Outdated" }]
+    }
+  ],
+  "Employees": [{ "Name": "ebentaher" }, { "Name": "baheryes" }, { "Name": "elyes" }],
+  "Priority": [{ "Level": "High" }, { "Level": "Medium" }, { "Level": "Low" }],
+  "Planner": [{ "Name": "PRD_MAINT" }, { "Name": "PRD_DIAG" }],
+  "WorkCenter": [{ "Name": "1000" }, { "Name": "1010" }],
+  "Objects": [
+    { "Name": "Printer", "Key": 0 },
+    { "Name": "Server", "Key": 1 },
+    { "Name": "Desktop Computer", "Key": 2 },
+    { "Name": "Tablet", "Key": 3 }
+  ]
+}

@@ -1,0 +1,40 @@
+<mvc:View controllerName="AssetPM.controller.Home" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:m="sap.m" height="100%">
+	<tnt:ToolHeader >
+		<!--Date-->
+		<m:Text text="{Date>/day}" wrapping="false"/>
+		<core:Icon src="sap-icon://date-time"/>
+		<m:Text text="{Date>/time}" wrapping="false"/>
+		<m:ToolbarSpacer/>
+		<m:Text text="Create Repair Request"/>
+		<m:ToolbarSpacer/>
+	</tnt:ToolHeader >
+	<m:Page showHeader="false">
+		<f:Form editable="true">
+			<f:title>
+				<core:Title/>
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" columnsXL="2" columnsL="2"
+					columnsM="1" singleContainerFullSize="false"/>
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer>
+					<f:formElements>
+						<f:FormElement label="technical Object">
+							<f:fields>
+								<m:Input id="objectInput" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequest"
+									suggestionItems="{Data>/Objects}">
+									<m:suggestionItems>
+										<core:Item text="{Data>Name}"/>
+									</m:suggestionItems>
+								</m:Input>
+								<m:Button type="Emphasized" text="Create" press="onPress"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</m:Page>
+</mvc:View>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0"
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="com.sap.RepairRequest" sap:schema-version="1"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="RepairRequest" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RepairRequest" />
+                </Key>
+                <Property Name="Technical Object" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Technical Object" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="Problem" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Problem" sap:creatable="false" sap:updatable="true" sap:sortable="false" />
+                <Property Name="Cause" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cause" sap:creatable="false" sap:quickinfo="Metadatatooltip" sap:updatable="true" sap:sortable="false"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" MaxLength="256" sap:label="Description" sap:creatable="false" sap:updatable="true" sap:sortable="false" />
+                <Property Name="cause" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="cause" sap:creatable="false" sap:updatable="false" sap:sortable="false" />
+                <Property Name="Stoppage" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Machine Stoppage" sap:creatable="false" sap:updatable="true" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Priority" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Priority" sap:creatable="false" sap:quickinfo="Metadatatooltip" sap:updatable="true" sap:sortable="false"/>
+                <Property Name="Reporter" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Problem" sap:creatable="false" sap:updatable="true" sap:sortable="false"/>
+                <Property Name="StartDate" Type="Edm.DateTimeOffset" Nullable="false" MaxLength="256" sap:label="Start Date" sap:creatable="false" sap:updatable="true" sap:sortable="false"/>
+                <Property Name="ExpectedStartDate" Type="Edm.DateTimeOffset" Nullable="false" MaxLength="256" sap:label="Expected Start Date" sap:creatable="false" sap:updatable="true" sap:sortable="false"/>
+                <Property Name="PlannerGroupe" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Problem" sap:creatable="false" sap:updatable="true" sap:sortable="false" />
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Problem" sap:creatable="false" sap:updatable="true" sap:sortable="false" />
+            </EntityType>
+            <EntityType Name="Cause" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cause" />
+                </Key>
+                <Property Name="Cause" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="KTEXT" sap:label="Cause" />
+            </EntityType>
+            <EntityType Name="Priority" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Priority" />
+                </Key>
+                <Property Name="Priority" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"/>
+            </EntityType>
+            <EntityType Name="Problem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Problem" />
+                </Key>
+                <Property Name="problem" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="KTEXT" sap:label="Cause" />
+            </EntityType>
+            <EntityType Name="Planner Group" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="PlannerGroup" />
+                </Key>
+                <Property Name="PlannerGroup" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase"/>
+            </EntityType>
+            <EntityType Name="Reporter" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Reporter" />
+                </Key>
+                <Property Name="Reporter" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="KTEXT" sap:label="Cause" />
+            </EntityType>
+            <EntityType Name="Work Center" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WorkCenter" />
+                </Key>
+                <Property Name="WorkCenter" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase"/>
+            </EntityType>
+            <EntityContainer Name="com.sap.RepairRequest_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="json">
+                <EntitySet Name="Problem" EntityType="com.sap.RepairRequest.Problem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1" />
+                <EntitySet Name="Cause" EntityType="com.sap.RepairRequest.Cause" sap:creatable="false" sap:semantics="fixed-values" sap:updatable="false" sap:deletable="false" sap:content-version="1" sap:countable="false" />
+                <EntitySet Name="Priority" EntityType="com.sap.RepairRequest.Priority" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1" sap:countable="false" sap:semantics="fixed-values"/>
+                <EntitySet Name="PlannerGroup" EntityType="com.sap.RepairRequest.PlannerGroup" sap:semantics="fixed-values" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="Reporter" EntityType="com.sap.RepairRequest.Reporter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1" sap:countable="false" />
+                <EntitySet Name="WorkCenter" EntityType="com.sap.RepairRequest.WorkCenter" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1" sap:countable="false" sap:semantics="fixed-values" />
+            </EntityContainer>
+            <Annotations Target="com.sap.GL.zrha.RepairRequest/Problem"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Problem" />
+                        <PropertyValue Property="CollectionPath" String="Problem" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Problem" />
+                                    <PropertyValue Property="ValueListProperty" String="Problem" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="com.sap.GL.zrha.RepairRequest/Priority"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Priority" />
+                        <PropertyValue Property="CollectionPath" String="Priority" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Problem" />
+                                    <PropertyValue Property="ValueListProperty" String="Problem" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="com.sap.GL.zrha.RepairRequest/Problem"
+                xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="com.sap.vocabularies.Common.v1.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Problem" />
+                        <PropertyValue Property="CollectionPath" String="Problem" />
+                        <PropertyValue Property="SearchSupported" Bool="true" />
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="com.sap.vocabularies.Common.v1.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Problem" />
+                                    <PropertyValue Property="ValueListProperty" String="Problem" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

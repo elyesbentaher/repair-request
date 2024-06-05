@@ -1,0 +1,132 @@
+<mvc:View controllerName="AssetPM.controller.Request" xmlns:core="sap.ui.core" xmlns:tnt="sap.tnt" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns="sap.m" height="100%" xmlns:uni="sap.ui.unified">
+	<Page showNavButton="true" navButtonPress=".onNavBack" title="Create Repair Request">
+		<VBox class="sapUiSmallMarginTopBottom sapUiLargeMarginBeginEnd">
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Title text="Technical Object: {ObjectModel>/ProductId}: {ObjectModel>/Product}"/>
+			</Toolbar>
+			<f:Form editable="true">
+				<f:title>
+					<core:Title/>
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0"
+						emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							
+							<f:FormElement label="Problem">
+								<f:fields>
+									<MultiInput showClearIcon="true" id="problem" placeholder="Enter Problem" suggestionItems="{ObjectModel>/Problems}" showValueHelp="true"
+										valueHelpRequest="onValueHelpProblem">
+										<core:Item text="{ObjectModel>Name}"/>
+									</MultiInput>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Cause">
+								<f:fields>
+									<ComboBox id="cause" placeholder="Enter Cause" items="{ObjectModel>/Cause}">
+										<core:Item text="{ObjectModel>Name}"/>
+									</ComboBox>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Priority">
+								<f:fields>
+									<ComboBox id="priority" placeholder="Enter Priority" items="{Data>/Priority}">
+										<core:Item text="{Data>Level}"/>
+									</ComboBox>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Start Date/Time">
+								<f:fields>
+									<DateTimePicker id="start" showCurrentDateButton="true" valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="long" change="handleChange"
+										class="sapUiSmallMarginBottom"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Planner Group">
+								<f:fields>
+									<Input id="group" suggestionItems="{Data>/Planner}" showSuggestion="true" showValueHelp="true" valueHelpRequest=".onValueHelpPlanner"
+										placeholder="Enter Planner Group">
+										<suggestionItems>
+											<core:Item text="{Data>Name}"/>
+										</suggestionItems>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer >
+						<f:formElements>
+							<f:FormElement label="Description">
+								<f:fields>
+									<TextArea id="description" placeholder="Enter Description"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Machine Stoppage">
+								<f:fields>
+									<Switch state="false" customTextOn="Yes" customTextOff="No"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Reporter">
+								<f:fields>
+									<Input id="reporter" placeholder="Enter Reporter" suggestionItems="{Data>/Employees}" showSuggestion="true" showValueHelp="true"
+										valueHelpRequest=".onValueHelpReporter">
+										<suggestionItems>
+											<core:Item text="{Data>Name}"/>
+										</suggestionItems>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Expected Start Date/Time">
+								<f:fields>
+									<DatePicker id="expectedStart" showCurrentDateButton="true" valueFormat="yyyy-MM-dd-HH-mm-ss" displayFormat="long" change="handleChange"
+										class="sapUiSmallMarginBottom"/>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Work Center">
+								<f:fields>
+									<Input id="wc" placeholder="Enter WC" suggestionItems="{Data>/WorkCenter}" showSuggestion="true" showValueHelp="true"
+										valueHelpRequest=".onValueHelpPlant">
+										<suggestionItems>
+											<core:Item text="{Data>Name}"/>
+										</suggestionItems>
+									</Input>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+			<VBox class="sapUiSmallMarginTopBottom sapUiLargeMarginBeginEnd" width="600px">
+				<Toolbar>
+					<Title text="Photos"/>
+					<ToolbarSpacer/>
+					<uni:FileUploader buttonText="Add Photo" style="Emphasized" multiple="false" buttonOnly="true" icon="sap-icon://add-photo"
+						uploadOnChange="false" sendXHR="true" useMultipart="false" fileType="JPG,JPEG,jpeg,jpg,PNG,png" sameFilenameAllowed="true"
+						typeMissmatch="onTypeMissmatch" change="onChangeCamera"/>
+				</Toolbar>
+				<HBox justifyContent="Start">
+					<FlexBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTopBottom sapUiLargeMarginBeginEnd">
+						<Image src="./mockserver/empty.jpg" id="iImageTicket" densityAware="true" width="100px" height="100px"/>
+					</FlexBox>
+					<FlexBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTopBottom sapUiLargeMarginBeginEnd">
+						<Image src="./mockserver/empty.jpg" id="iImageTicket2" densityAware="true" width="100px" height="100px"/>
+					</FlexBox>
+					<FlexBox alignItems="Center" justifyContent="Center" class="sapUiSmallMarginTopBottom sapUiLargeMarginBeginEnd">
+						<Image src="./mockserver/empty.jpg" id="iImageTicket4" densityAware="true" width="100px" height="100px"/>
+					</FlexBox>
+				</HBox>
+			</VBox>
+		</VBox>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Save" press="onPressSave"/>
+				<Button type="Reject" text="Reset" press="onPressReset"/>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>
